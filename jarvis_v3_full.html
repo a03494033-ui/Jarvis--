@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="icon" type="" href="Авелон.jpg">
+</head>
+<body>
+
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  body {
+    background: #08080c;
+    color: #f2f0eb;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+  }
+
+  :root {
+    --lime: #b8ff3c;
+    --lime2: #d4ff6e;
+    --dark: #08080c;
+    --card: #101018;
+    --card2: #141420;
+    --border: rgba(255, 255, 255, 0.07);
+    --muted: rgba(242, 240, 235, 0.4);
+  }
+
+  nav {
+    width: 100%;
+    background: rgba(8, 8, 12, 0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
+  .nlogo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .nlogo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--lime);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nlogo-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .nlogo-name {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: #f2f0eb;
+  }
+  .nlogo-tag {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: -2px;
+  }
+  .nright {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .nav-link {
+    font-size: 0.78rem;
+    color: var(--muted);
+    cursor: pointer;
+    display: none;
+  }
+  @media (min-width: 500px) {
+    .nav-link {
+      display: block;
+    }
+  }
+  .nbtn {
+    background: var(--lime);
+    color: #08080c;
+    border: none;
+    padding: 0.48rem 1.1rem;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nbtn:hover {
+    background: var(--lime2);
+  }
+
+  .ticker {
+    width: 100%;
+    overflow: hidden;
+    background: #0d0d14;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .ticker-wrap {
+    display: flex;
+    animation: tick 22s linear infinite;
+    width: max-content;
+    gap: 2.5rem;
+    white-space: nowrap;
+  }
+  @keyframes tick {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  .ticker-item {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    color: rgba(184, 255, 60, 0.6);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .tdot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--lime);
+    display: inline-block;
+  }
+
+  .hero {
+    width: 100%;
+    padding: 3.5rem 1.4rem 2.5rem;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184, 255, 60, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 255, 60, 0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .hero-glow1 {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(184, 255, 60, 0.07) 0%,
+      transparent 65%
+    );
+    top: -80px;
+    right: -80px;
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(100, 80, 255, 0.06) 0%,
+      transparent 65%
+    );
+    bottom: 20px;
+    left: -40px;
+    pointer-events: none;
+  }
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #101018;
+    border: 1px solid rgba(184, 255, 60, 0.2);
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .hero-pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--lime);
+    animation: blink 1.8s infinite;
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 4px var(--lime);
+    }
+    50% {
+      opacity: 0.4;
+      box-shadow: none;
+    }
+  }
+  .hero-pill span {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: rgba(184, 255, 60, 0.8);
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(3.2rem, 14vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  .h1-white {
+    color: #f2f0eb;
+    display: block;
+  }
+  .h1-lime {
+    color: var(--lime);
+    display: block;
+  }
+  .h1-outline {
+    -webkit-text-stroke: 1.5px rgba(184, 255, 60, 0.4);
+    color: transparent;
+    display: block;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 440px;
+    margin-bottom: 1.8rem;
+    position: relative;
+  }
+  .cmd-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .cmd-big {
+    background: var(--card);
+    border: 1px solid rgba(184, 255, 60, 0.2);
+    border-radius: 10px;
+    padding: 0.8rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .cmd-num {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2.2rem;
+    color: var(--lime);
+    line-height: 1;
+  }
+  .cmd-sub {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .cmd-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .ctag {
+    background: rgba(184, 255, 60, 0.07);
+    border: 1px solid rgba(184, 255, 60, 0.12);
+    color: rgba(184, 255, 60, 0.6);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    font-family: "JetBrains Mono", monospace;
+    white-space: nowrap;
+  }
+  .hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .btn-solid {
+    background: var(--lime);
+    color: #08080c;
+    border: none;
+    padding: 0.85rem 1.6rem;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-solid:hover {
+    background: var(--lime2);
+    transform: translateY(-1px);
+  }
+  .btn-line {
+    background: transparent;
+    color: #f2f0eb;
+    border: 1px solid var(--border);
+    padding: 0.85rem 1.6rem;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-line:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .sbar-item {
+    background: var(--card);
+    padding: 0.9rem 0.5rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .sbar-item:last-child {
+    border-right: none;
+  }
+  .sbar-n {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5rem;
+    color: var(--lime);
+  }
+  .sbar-l {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  .section {
+    width: 100%;
+    padding: 3rem 1.4rem;
+  }
+  .section.dark2 {
+    background: #0d0d14;
+  }
+  .section.dark3 {
+    background: #101018;
+  }
+  .ey {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 3px;
+    color: var(--lime);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .stitle {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    letter-spacing: 1px;
+    color: #f2f0eb;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .sline {
+    width: 36px;
+    height: 2.5px;
+    background: var(--lime);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+
+  .vgrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .vcard {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .vthumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #0a0a10, #141422);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .vthumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 30px,
+      rgba(184, 255, 60, 0.015) 30px,
+      rgba(184, 255, 60, 0.015) 31px
+    );
+    pointer-events: none;
+  }
+  .playbtn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(184, 255, 60, 0.1);
+    border: 1.5px solid rgba(184, 255, 60, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+    transition: all 0.25s;
+    position: relative;
+    z-index: 1;
+  }
+  .vthumb:hover .playbtn {
+    background: rgba(184, 255, 60, 0.18);
+    border-color: var(--lime);
+    transform: scale(1.07);
+  }
+  .ptri {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 18px solid var(--lime);
+    margin-left: 4px;
+  }
+  .vlabel {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+  .vinput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #0a0a10;
+    border: none;
+    border-top: 1px solid var(--border);
+    color: #f2f0eb;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+  }
+  .vinput::placeholder {
+    color: var(--muted);
+  }
+  .vbtn {
+    width: 100%;
+    padding: 0.6rem;
+    background: rgba(184, 255, 60, 0.06);
+    border: none;
+    border-top: 1px solid rgba(184, 255, 60, 0.1);
+    color: var(--lime);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .vbtn:hover {
+    background: rgba(184, 255, 60, 0.12);
+  }
+  .vembed {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+    display: block;
+  }
+
+  .fgrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .fcard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+  }
+  .fcard:hover {
+    border-color: rgba(184, 255, 60, 0.2);
+    background: var(--card2);
+  }
+  .ficon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(184, 255, 60, 0.07);
+    border: 1px solid rgba(184, 255, 60, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+  .ftext h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #f2f0eb;
+    margin-bottom: 0.25rem;
+  }
+  .ftext p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .fnew {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    background: rgba(184, 255, 60, 0.12);
+    color: var(--lime);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .fwip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    background: rgba(255, 180, 0, 0.1);
+    color: #ffb400;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .cmd-section-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.6rem;
+  }
+  .cmd-chip {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .cmd-chip:hover {
+    border-color: rgba(184, 255, 60, 0.2);
+    background: rgba(184, 255, 60, 0.04);
+  }
+  .cc-icon {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .cc-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #f2f0eb;
+    margin-bottom: 0.15rem;
+  }
+  .cc-desc {
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  .updates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .upd-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .upd-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--lime);
+    border-radius: 0 2px 2px 0;
+  }
+  .upd-card.wip::before {
+    background: #ffb400;
+  }
+  .upd-ver {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    color: var(--lime);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .upd-card.wip .upd-ver {
+    color: #ffb400;
+  }
+  .upd-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f2f0eb;
+    margin-bottom: 0.6rem;
+  }
+  .upd-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .upd-item {
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .upd-item::before {
+    content: "→";
+    color: var(--lime);
+    flex-shrink: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    margin-top: 1px;
+  }
+  .upd-card.wip .upd-item::before {
+    color: #ffb400;
+  }
+
+  .pcards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .pcard {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem 1.3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .pcard.hot {
+    background: #0d1208;
+    border-color: rgba(184, 255, 60, 0.22);
+  }
+  .pcard.hot::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  }
+  .ptop-badge {
+    display: inline-block;
+    background: var(--lime);
+    color: #08080c;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 0.22rem 0.7rem;
+    border-radius: 5px;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .pname {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: #f2f0eb;
+    margin-bottom: 0.4rem;
+  }
+  .pold-price {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 0.15rem;
+  }
+  .pprice {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+    color: var(--lime);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .pprice sub {
+    font-size: 1.2rem;
+    vertical-align: baseline;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+  }
+  .pnote {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.3rem;
+  }
+  .pcoming {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    color: rgba(255, 180, 0, 0.7);
+    padding: 0.5rem 0.9rem;
+    border: 1px solid rgba(255, 180, 0, 0.15);
+    border-radius: 6px;
+    margin-bottom: 1.2rem;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+  .plist {
+    margin-bottom: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pli {
+    font-size: 0.82rem;
+    color: rgba(242, 240, 235, 0.6);
+    padding: 0.38rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .pli:last-child {
+    border-bottom: none;
+  }
+  .pli-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--lime);
+    flex-shrink: 0;
+  }
+  .pcard.hot .pli {
+    color: rgba(242, 240, 235, 0.75);
+  }
+  .pbtn {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .pbtn.lime {
+    background: var(--lime);
+    color: #08080c;
+  }
+  .pbtn.lime:hover {
+    background: var(--lime2);
+  }
+  .pbtn.ghost {
+    background: transparent;
+    color: #f2f0eb;
+    border: 1px solid var(--border);
+  }
+  .pbtn.ghost:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .offer-box {
+    margin-top: 1rem;
+    background: rgba(184, 255, 60, 0.05);
+    border: 1px solid rgba(184, 255, 60, 0.12);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.78rem;
+    color: rgba(184, 255, 60, 0.7);
+    text-align: center;
+  }
+
+  .cbox {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cbox-glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(184, 255, 60, 0.06) 0%,
+      transparent 70%
+    );
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .cbox p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    position: relative;
+  }
+  .ctag {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: var(--lime);
+    margin: 0.6rem 0;
+    position: relative;
+  }
+  .tgbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: #0088cc;
+    color: #fff;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.84rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1.2rem;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .tgbtn:hover {
+    background: #0077b3;
+  }
+
+  .avelon-strip {
+    background: #0d0d14;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 1.4rem;
+    text-align: center;
+  }
+  .av-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+  .av-sub {
+    font-size: 0.78rem;
+    color: rgba(242, 240, 235, 0.2);
+    letter-spacing: 1px;
+  }
+
+  footer {
+    background: var(--dark);
+    border-top: 1px solid var(--border);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .flogo {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: rgba(242, 240, 235, 0.2);
+  }
+  footer p {
+    font-size: 0.7rem;
+    color: rgba(242, 240, 235, 0.12);
+  }
+
+  /* ================= DESKTOP FIX ================= */
+
+/* Центр кардани тамоми сайт */
+.hero,
+.section,
+nav,
+.ticker,
+.avelon-strip,
+footer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Каме ҳаво аз канорҳо */
+.hero,
+.section,
+nav {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Видео блок — дуто дар як қатор */
+@media (min-width: 900px) {
+  .vgrid {
+    flex-direction: row;
+  }
+  .vcard {
+    width: 50%;
+  }
+}
+
+/* Features grid — 2 сутун */
+@media (min-width: 900px) {
+  .fgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Pricing — ду карточка дар як қатор */
+@media (min-width: 900px) {
+  .pcards {
+    flex-direction: row;
+  }
+  .pcard {
+    width: 50%;
+  }
+}
+
+/* Командҳо — зеботар spacing */
+.cmd-section-inner {
+  gap: 1rem;
+}
+
+/* Stats бар — калонтар ва зеботар */
+@media (min-width: 900px) {
+  .stats-bar {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Hero текстро маҳдуд мекунем */
+.hero-desc {
+  max-width: 520px;
+}
+
+/* Header беҳтар spacing */
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Updates блок — каме компакт */
+.updates-list {
+  max-width: 800px;
+}
+
+/* Contact центр */
+.cbox {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ===== FIX: ПРИМЕРЫ КОМАНД ===== */
+
+/* Контейнерро центр мекунем */
+.section.dark2 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Заголовокҳо центр ва компакт */
+.section.dark2 .ey,
+.section.dark2 .stitle,
+.section.dark2 .sline {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid-ро дуруст мекунем */
+.cmd-section-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Карточкаҳоро баробар мекунем */
+.cmd-chip {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 90px;
+}
+
+/* Текстҳоро центр мекунем */
+.cc-name,
+.cc-desc,
+.cc-icon {
+  text-align: center;
+}
+
+/* Барои ноутбук — каме калонтар */
+@media (min-width: 900px) {
+  .cmd-section-inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Барои экранҳои калон */
+@media (min-width: 1200px) {
+  .cmd-section-inner {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ================= GLOBAL HOVER EFFECTS ================= */
+
+/* ===== NAV LINKS ===== */
+.nav-link {
+  position: relative;
+  transition: color 0.25s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1.5px;
+  background: var(--lime);
+  transition: width 0.25s;
+}
+.nav-link:hover {
+  color: #f2f0eb;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ===== BUTTONS ===== */
+.btn-solid,
+.nbtn,
+.pbtn.lime {
+  transition: all 0.25s ease;
+}
+.btn-solid:hover,
+.nbtn:hover,
+.pbtn.lime:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(184, 255, 60, 0.2);
+}
+
+.btn-line,
+.pbtn.ghost {
+  transition: all 0.25s ease;
+}
+.btn-line:hover,
+.pbtn.ghost:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+  transform: translateY(-2px);
+}
+
+/* ===== FEATURE CARDS ===== */
+.fcard {
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.fcard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(184, 255, 60, 0.25);
+  box-shadow: 0 10px 30px rgba(184, 255, 60, 0.08);
+}
+
+/* ===== VIDEO CARDS ===== */
+.vcard {
+  transition: all 0.25s ease;
+}
+.vcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== COMMAND CHIPS ===== */
+.cmd-chip {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+.cmd-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(184,255,60,0.15), transparent 70%);
+  opacity: 0;
+  transition: 0.25s;
+}
+.cmd-chip:hover {
+  transform: translateY(-4px);
+  border-color: rgba(184, 255, 60, 0.3);
+  background: rgba(184,255,60,0.05);
+}
+.cmd-chip:hover::before {
+  opacity: 1;
+}
+.cmd-chip:hover .cc-name {
+  color: var(--lime);
+}
+
+/* ===== UPDATE CARDS ===== */
+.upd-card {
+  transition: all 0.25s ease;
+}
+.upd-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(184, 255, 60, 0.25);
+  box-shadow: 0 10px 25px rgba(184, 255, 60, 0.07);
+}
+
+/* ===== PRICING CARDS ===== */
+.pcard {
+  transition: all 0.3s ease;
+}
+.pcard:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(184, 255, 60, 0.3);
+  box-shadow: 0 15px 40px rgba(184, 255, 60, 0.08);
+}
+
+/* HOT card эффект сильнее */
+.pcard.hot:hover {
+  box-shadow: 0 20px 50px rgba(184, 255, 60, 0.15);
+}
+
+/* ===== TELEGRAM BUTTON ===== */
+.tgbtn {
+  transition: all 0.25s ease;
+}
+.tgbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 136, 204, 0.4);
+}
+
+/* ===== LINKS (a) ===== */
+a {
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.85;
+}
+/* ===== FINAL VIDEO FIX (100% WORK) ===== */
+
+#videos .vgrid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Card */
+#videos .vcard {
+  width: 100%;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Video */
+#videos .vembed {
+  width: 100%;
+  height: 320px;
+  display: block;
+  background: black;
+}
+
+/* Label */
+#videos .vlabel {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* Hover */
+#videos .vcard:hover {
+  transform: translateY(-6px);
+  transition: 0.3s;
+  border-color: rgba(184, 255, 60, 0.3);
+  box-shadow: 0 15px 40px rgba(184, 255, 60, 0.08);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  #videos .vgrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #videos .vembed {
+    height: 220px;
+  }
+}
+</style>
+
+<nav>
+  <div class="nlogo">
+    <div class="nlogo-icon">
+      <svg viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="9" r="4" fill="#08080c" />
+        <circle cx="9" cy="9" r="7" stroke="#08080c" stroke-width="1.5" />
+        <path
+          d="M9 2v2M9 14v2M2 9h2M14 9h2"
+          stroke="#08080c"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    </div>
+    <div>
+      <div class="nlogo-name">Jarvis</div>
+      <div class="nlogo-tag">Avelon Technology</div>
+    </div>
+  </div>
+  <div class="nright">
+    <span
+      class="nav-link"
+      onclick="
+        document
+          .getElementById('features')
+          .scrollIntoView({ behavior: 'smooth' })
+      "
+      >Возможности</span
+    >
+    <span
+      class="nav-link"
+      onclick="
+        document
+          .getElementById('pricing')
+          .scrollIntoView({ behavior: 'smooth' })
+      "
+      >Цены</span
+    >
+    <button
+      class="nbtn"
+      onclick="
+        document
+          .getElementById('contact')
+          .scrollIntoView({ behavior: 'smooth' })
+      "
+    >
+      Купить
+    </button>
+  </div>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-wrap">
+    <div class="ticker-item"><span class="tdot"></span>Jarvis Pro</div>
+    <div class="ticker-item"><span class="tdot"></span>300+ команд</div>
+    <div class="ticker-item"><span class="tdot"></span>Анализ экрана</div>
+    <div class="ticker-item"><span class="tdot"></span>Умный дом</div>
+    <div class="ticker-item"><span class="tdot"></span>Жесты рук</div>
+    <div class="ticker-item"><span class="tdot"></span>GPT интеграция</div>
+    <div class="ticker-item"><span class="tdot"></span>Голос Jarvis</div>
+    <div class="ticker-item"><span class="tdot"></span>Avelon Technology</div>
+    <div class="ticker-item"><span class="tdot"></span>Jarvis Pro</div>
+    <div class="ticker-item"><span class="tdot"></span>300+ команд</div>
+    <div class="ticker-item"><span class="tdot"></span>Анализ экрана</div>
+    <div class="ticker-item"><span class="tdot"></span>Умный дом</div>
+    <div class="ticker-item"><span class="tdot"></span>Жесты рук</div>
+    <div class="ticker-item"><span class="tdot"></span>GPT интеграция</div>
+    <div class="ticker-item"><span class="tdot"></span>Голос Jarvis</div>
+    <div class="ticker-item"><span class="tdot"></span>Avelon Technology</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-pill">
+    <div class="hero-pill-dot"></div>
+    <span>Новое поколение ИИ-ассистентов</span>
+  </div>
+  <h1>
+    <span class="h1-white">Голосовой</span>
+    <span class="h1-lime">Jarvis</span>
+    <span class="h1-outline">Ассистент</span>
+  </h1>
+  <p class="hero-desc">
+    Управляйте компьютером, умным домом и рабочим пространством одним голосом.
+    Быстро. Точно. Умно.
+  </p>
+  <div class="cmd-row">
+    <div class="cmd-big">
+      <div class="cmd-num">300+</div>
+      <div class="cmd-sub">Голосовых команд</div>
+    </div>
+    <div class="cmd-tags">
+      <span class="ctag">Запуск приложений</span>
+      <span class="ctag">Управление окнами</span>
+      <span class="ctag">Скриншоты</span>
+      <span class="ctag">Таймеры</span>
+      <span class="ctag">Умный дом</span>
+      <span class="ctag">ChatGPT</span>
+      <span class="ctag">Жесты</span>
+      <span class="ctag">Рабочий стол</span>
+    </div>
+  </div>
+  <div class="hero-btns">
+    <button
+      class="btn-solid"
+      onclick="
+        document
+          .getElementById('pricing')
+          .scrollIntoView({ behavior: 'smooth' })
+      "
+    >
+      Получить Jarvis Pro — 1 000 ₽
+    </button>
+    <button
+      class="btn-line"
+      onclick="
+        document.getElementById('videos').scrollIntoView({ behavior: 'smooth' })
+      "
+    >
+      Смотреть демо ↓
+    </button>
+  </div>
+  <div class="stats-bar">
+    <div class="sbar-item">
+      <div class="sbar-n">300+</div>
+      <div class="sbar-l">Команд</div>
+    </div>
+    <div class="sbar-item">
+      <div class="sbar-n">24/7</div>
+      <div class="sbar-l">Работа</div>
+    </div>
+    <div class="sbar-item">
+      <div class="sbar-n">AI</div>
+      <div class="sbar-l">Powered</div>
+    </div>
+    <div class="sbar-item">
+      <div class="sbar-n">GPT</div>
+      <div class="sbar-l">Интеграция</div>
+    </div>
+  </div>
+</div>
+
+<div class="section dark2" id="videos">
+  <div class="ey">Демонстрация</div>
+  <div class="stitle">Jarvis в действии</div>
+  <div class="sline"></div>
+
+
+  <!-- VIDEO 1 -->
+  <div class="vcard">
+    <video class="vembed" controls>
+      <source src="1.MOV" type="video/mp4">
+      Браузери шумо видео ро дастгирӣ намекунад
+    </video>
+    <div class="vlabel">Jarvis Pro — Видео 1</div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="vcard">
+    <video class="vembed" controls>
+      <source src="2.MOV" type="video/mp4">
+      Браузери шумо видео ро дастгирӣ намекунад
+    </video>
+    <div class="vlabel">Jarvis Premium — Видео 2</div>
+  </div>
+
+</div>
+    
+      
+<div class="section" id="features">
+  <div class="ey">Возможности</div>
+  <div class="stitle">Что умеет Jarvis</div>
+  <div class="sline"></div>
+  <div class="fgrid">
+    <div class="fcard">
+      <div class="ficon-box">🎙️</div>
+      <div class="ftext">
+        <h3>Голосовое управление <span class="fnew">NEW</span></h3>
+        <p>
+          300+ команд для полного контроля — запуск приложений, настройки
+          системы, работа с файлами.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">🖥️</div>
+      <div class="ftext">
+        <h3>Анализ экрана <span class="fnew">NEW</span></h3>
+        <p>
+          Jarvis видит ваш экран и помогает в реальном времени — анализирует
+          контент и предлагает действия.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">⚡</div>
+      <div class="ftext">
+        <h3>Рабочее пространство <span class="fnew">NEW</span></h3>
+        <p>
+          Запускайте полный рабочий стол с нужными приложениями по одной
+          голосовой команде.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">✋</div>
+      <div class="ftext">
+        <h3>Управление жестами <span class="fnew">NEW</span></h3>
+        <p>
+          Закрывайте, перемещайте и управляйте окнами жестами рук — без касания
+          мыши.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">🔑</div>
+      <div class="ftext">
+        <h3>ChatGPT интеграция <span class="fnew">NEW</span></h3>
+        <p>
+          Добавьте свой API KEY от ChatGPT и используйте мощь GPT напрямую
+          внутри Jarvis.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">😴</div>
+      <div class="ftext">
+        <h3>Управление отдыхом <span class="fnew">NEW</span></h3>
+        <p>
+          Умные таймеры, режим перерывов и напоминания для максимальной
+          продуктивности.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">🏠</div>
+      <div class="ftext">
+        <h3>Умный дом <span class="fwip">В РАБОТЕ</span></h3>
+        <p>
+          Управляйте устройствами умного дома голосом. Функция активно
+          разрабатывается.
+        </p>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ficon-box">🤖</div>
+      <div class="ftext">
+        <h3>Голос Jarvis <span class="fwip">В РАБОТЕ</span></h3>
+        <p>
+          Синтезатор настоящего голоса Jarvis — скоро он заговорит, ответит и
+          подскажет.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section dark2">
+  <div class="ey">Примеры команд</div>
+  <div class="stitle">300+ на все случаи</div>
+  <div class="sline"></div>
+  <div class="cmd-section-inner">
+    <div class="cmd-chip">
+      <div class="cc-icon">🖥️</div>
+      <div class="cc-name">Открой браузер</div>
+      <div class="cc-desc">Запуск приложений</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">📸</div>
+      <div class="cc-name">Сделай скриншот</div>
+      <div class="cc-desc">Захват экрана</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">🔇</div>
+      <div class="cc-name">Выключи звук</div>
+      <div class="cc-desc">Аудио управление</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">⏰</div>
+      <div class="cc-name">Таймер 25 минут</div>
+      <div class="cc-desc">Pomodoro режим</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">📁</div>
+      <div class="cc-name">Открой папку</div>
+      <div class="cc-desc">Файловая система</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">🌐</div>
+      <div class="cc-name">Поиск в Google</div>
+      <div class="cc-desc">Быстрый поиск</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">💡</div>
+      <div class="cc-name">Включи свет</div>
+      <div class="cc-desc">Умный дом</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">🔒</div>
+      <div class="cc-name">Заблокируй ПК</div>
+      <div class="cc-desc">Безопасность</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">📊</div>
+      <div class="cc-name">Режим работы</div>
+      <div class="cc-desc">Пространство</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">🎵</div>
+      <div class="cc-name">Включи музыку</div>
+      <div class="cc-desc">Медиа</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">🤖</div>
+      <div class="cc-name">Спроси ChatGPT</div>
+      <div class="cc-desc">ИИ ответы</div>
+    </div>
+    <div class="cmd-chip">
+      <div class="cc-icon">😴</div>
+      <div class="cc-name">Режим отдыха</div>
+      <div class="cc-desc">Перерыв</div>
+    </div>
+  </div>
+</div>
+
+<div class="section dark3">
+  <div class="ey">Последние обновления</div>
+  <div class="stitle">Что нового</div>
+  <div class="sline"></div>
+  <div class="updates-list">
+    <div class="upd-card">
+      <div class="upd-ver">Jarvis Pro — Свежее обновление</div>
+      <div class="upd-title">Jarvis стал живее и удобнее</div>
+      <div class="upd-items">
+        <div class="upd-item">
+          Новый функционал — Jarvis стал более живым и естественным
+        </div>
+        <div class="upd-item">
+          Исправлены баги управления через админ-панель
+        </div>
+        <div class="upd-item">
+          Устранены ошибки микрофона и распознавания голоса
+        </div>
+        <div class="upd-item">Обновление выходит в приватный канал</div>
+      </div>
+    </div>
+    <div class="upd-card wip">
+      <div class="upd-ver">Jarvis Premium — В разработке</div>
+      <div class="upd-title">Огромное расширение возможностей</div>
+      <div class="upd-items">
+        <div class="upd-item">
+          Сотни новых команд — запуск рабочего места по одной команде
+        </div>
+        <div class="upd-item">Анализ экрана и управление отдыхом</div>
+        <div class="upd-item">Управление умным домом (в разработке)</div>
+        <div class="upd-item">Жесты рук — управление окнами без мыши</div>
+        <div class="upd-item">
+          Синтезатор голоса Jarvis — свой настоящий голос
+        </div>
+        <div class="upd-item">Поддержка собственного API KEY от ChatGPT</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section dark2" id="pricing">
+  <div class="ey">Цены</div>
+  <div class="stitle">Выберите свой Jarvis</div>
+  <div class="sline"></div>
+  <div class="pcards">
+    <div class="pcard hot">
+      <div class="ptop-badge">🔥 Горячая цена</div>
+      <div class="pname">Jarvis Pro</div>
+      <div class="pold-price">2 000 ₽</div>
+      <div class="pprice"><sub>₽</sub>1 000</div>
+      <div class="pnote">Временная скидка до выхода Premium</div>
+      <div class="plist">
+        <div class="pli">
+          <div class="pli-dot"></div>
+          300+ голосовых команд
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Исправленные баги микрофона
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Улучшенная админ-панель
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Живой и натуральный Jarvis
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Приватный канал обновлений
+        </div>
+        <div class="pli" style="color: var(--lime)">
+          <div class="pli-dot"></div>
+          50% скидка на Jarvis Premium
+        </div>
+      </div>
+      <button
+        class="pbtn lime"
+        onclick="
+          document
+            .getElementById('contact')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        Купить Jarvis Pro
+      </button>
+    </div>
+    <div class="pcard">
+      <div class="pname">Jarvis Premium</div>
+      <div class="pcoming">⚙ В разработке — скоро выйдет</div>
+      <div class="plist">
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Всё из Jarvis Pro
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Анализ экрана в реальном времени
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Управление умным домом
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Жесты рук — управление окнами
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Синтезатор голоса Jarvis
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          ChatGPT API интеграция
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          1 команда = полное рабочее место
+        </div>
+        <div class="pli">
+          <div class="pli-dot"></div>
+          Управление отдыхом и таймеры
+        </div>
+      </div>
+      <button
+        class="pbtn ghost"
+        onclick="
+          document
+            .getElementById('contact')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        Уведомить о выходе
+      </button>
+    </div>
+  </div>
+  <div class="offer-box">
+    ‼ Покупатели Jarvis Pro получат Jarvis Premium со скидкой 50%
+  </div>
+</div>
+
+<div class="section" id="contact">
+  <div class="ey">Контакт</div>
+  <div class="stitle">Купить Jarvis</div>
+  <div class="sline"></div>
+  <div class="cbox">
+    <div class="cbox-glow"></div>
+    <p>
+      Для покупки Jarvis Pro или вопросов о Premium — пишите напрямую в Telegram
+    </p>
+    <div class="ctag">@vgorodebro</div>
+    <p>Команда Avelon Technology всегда на связи</p>
+    <a href="https://t.me/vgorodebro" class="tgbtn" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+        <path
+          d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+        />
+      </svg>
+      Написать в Telegram
+    </a>
+  </div>
+</div>
+
+<div class="avelon-strip">
+  <div class="av-title">Avelon Technology</div>
+  <div class="av-sub">Разработка продуктов нового поколения</div>
+</div>
+
+<footer>
+  <div class="flogo">Jarvis by Avelon</div>
+  <p>Jarvis Pro & Jarvis Premium © 2024 — Все права защищены</p>
+</footer>
+
+<script>
+  function showVI(vpId, inpId, btnId) {
+    document.getElementById(inpId).style.display = "block";
+    document.getElementById(btnId).style.display = "block";
+    document.getElementById(inpId).focus();
+  }
+  function getYT(url) {
+    var r = url.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/,
+    );
+    return r ? r[1] : null;
+  }
+  function tryLoad(vpId, url, inpId, btnId) {
+    var id = getYT(url);
+    if (!id) return;
+    var vp = document.getElementById(vpId);
+    vp.onclick = null;
+    vp.innerHTML =
+      '<iframe class="vembed" src="https://www.youtube.com/embed/' +
+      id +
+      '" allowfullscreen></iframe>';
+    document.getElementById(inpId).style.display = "none";
+    document.getElementById(btnId).style.display = "none";
+  }
+</script>
+
+  
+</body>
+</html>
+
